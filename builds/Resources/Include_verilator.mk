@@ -34,7 +34,7 @@ SIM_EXE_FILE = exe_HW_sim
 #    --x-initial fast   Optimize uninitialized value
 #    --noassert         Disable all assertions
 
-VERILATOR_FLAGS = --stats -O3 -CFLAGS -O3 -LDFLAGS -static --x-assign fast --x-initial fast --noassert
+VERILATOR_FLAGS = -O3 -CFLAGS "-O3 -mtune=native -fomit-frame-pointer" --x-assign fast --x-initial fast --noassert
 
 # Verilator flags: use the following to include code to generate VCDs
 # Select trace-depth according to your module hierarchy
