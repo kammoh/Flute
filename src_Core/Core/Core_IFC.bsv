@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2019 Bluespec, Inc. All Rights Reserved.
+// Copyright (c) 2018-2021 Bluespec, Inc. All Rights Reserved.
 
 package Core_IFC;
 
@@ -22,7 +22,8 @@ import ClientServer  :: *;
 // ================================================================
 // Project imports
 
-import Near_Mem_IFC :: *;    // For Wd_{Id,Addr,Data,User}_Dma
+import AXI_Widths   :: *;    // For Wd_{Id,Addr,Data,User}_Dma
+import Near_Mem_IFC :: *;
 
 // Main fabric
 import AXI4_Types   :: *;
@@ -124,8 +125,8 @@ interface Core_IFC #(numeric type t_n_interrupt_sources);
    // For ISA tests: watch memory writes to <tohost> addr
 
 `ifdef WATCH_TOHOST
-   method Action set_watch_tohost (Bool watch_tohost, Bit #(64) tohost_addr);
-   method Bit #(64) mv_tohost_value;
+   method Action set_watch_tohost (Bool watch_tohost, Fabric_Addr tohost_addr);
+   method Fabric_Data mv_tohost_value;
 `endif
 
    // Inform core that DDR4 has been initialized and is ready to accept requests
